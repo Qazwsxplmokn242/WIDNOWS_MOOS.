@@ -1,0 +1,33 @@
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: your-app-name   
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      
+  NODE_VERSION: '20.x'              
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+   # -
+    #    name: Set up QEMU
+     #   uses: docker/setup-qemu-action@v3
+    -
+      uses: actions/checkout@v6
+    -
+      name: file
+      run: |
+       mkdir -p disk
+       echo "hello" > disk/hello-file.txt
+
+    - name: Upload Artifacts TO Google Drive
+      uses: Jumbo810/Upload_Github_Artifacts_TO_GDrive@v2.3.3
+      with:
+        target: "./disk/hello-file.txt"
+        credentials: ${{ secrets.YOUR_SERVICE_ACCOUNT_CREDENTIALS }}
+        parent_folder_id: <YOUR_DRIVE_FOLDER_ID>
