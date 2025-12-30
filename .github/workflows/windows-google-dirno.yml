@@ -28,6 +28,6 @@ jobs:
     - name: Upload Artifacts TO Google Drive
       uses: Jumbo810/Upload_Github_Artifacts_TO_GDrive@v2.3.3
       with:
-        target: "./disk/hello-file.txt"
         credentials: ${{ secrets.YOUR_SERVICE_ACCOUNT_CREDENTIALS }}
-        parent_folder_id: <YOUR_DRIVE_FOLDER_ID>
+        parent_folder_id: ${{ secrets.YOUR_DRIVE_FOLDER_ID }}
+        target: "./disk/hello-file.txt"
