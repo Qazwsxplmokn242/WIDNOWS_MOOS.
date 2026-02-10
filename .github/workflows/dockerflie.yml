@@ -8,17 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
+      - uses: actions/checkout@v4
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
         with:
-          context: . # The context includes your Dockerfile
-          push: true
-          tags: yourusername/your-image:latest
-          cache-from: type=gha # Use GitHub's cache for layers
-          cache-to: type=gha,mode=max
+          dockerfile: Dockerfile # or path to your Dockerfile
+          # failure-threshold: warning # Fail on warnings
