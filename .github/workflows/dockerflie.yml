@@ -12,5 +12,4 @@ jobs:
       - name: Run Hadolint
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: Dockerfile # or path to your Dockerfile
-          # failure-threshold: warning # Fail on warnings
+          dockerfile: apt update
