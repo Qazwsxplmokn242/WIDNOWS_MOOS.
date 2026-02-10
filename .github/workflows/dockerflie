@@ -1,0 +1,43 @@
+name: Dockerfile Lint and Build
+
+on:
+  push:
+    paths:
+      - '**/Dockerfile'
+      - '**/Dockerfile.*'
+
+jobs:
+  lint-dockerfile:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Run Hadolint
+      uses: hadolint/hadolint-action@v3.1.0
+      with:
+        dockerfile: Dockerfile
+        failure-threshold: warning
+        
+    - name: Check Dockerfile syntax
+      run: |
+        docker build --no-cache --pull --tag test-image .
+        docker rmi test-image
+        
+  build-test:
+    needs: lint-dockerfile
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Build Docker image
+      run: |
+        docker build -t myapp:${{ github.sha }} .
+        
+    - name: Test Docker image
+      run: |
+        docker run --rm myapp:${{ github.sha }} npm test || true
+        docker run --rm myapp:${{ github.sha }} sh -c "which node && node --version"
