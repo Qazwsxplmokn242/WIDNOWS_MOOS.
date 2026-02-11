@@ -1,0 +1,25 @@
+name: Build from Dockerfile
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install novnc
+        run:  |
+         apt update && apt upgrade
+         apt install xfce4 xfce4-goodies tightvncserver
+         apt -y install novnc python3-websockify python3-numpy
+        
+#      - name: Установить зависимости
+ #       run: 
+  #    - name: Установить зависимости
+    #    run: 
+
+
+
+
+        
