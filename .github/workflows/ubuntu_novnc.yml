@@ -16,8 +16,13 @@ jobs:
          sudo apt -y install xfce4 xfce4-goodies tightvncserver
          sudo apt -y install novnc python3-websockify python3-numpy
         
-#      - name: Установить зависимости
- #       run: 
+      - name: install ngrok
+        run: |
+         sudo apt-get install unzip wget
+         wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+         unzip ngrok-stable-linux-amd64.zip
+         sudo mv ./ngrok /usr/bin/ngrok
+         ngrok
   #    - name: Установить зависимости
     #    run: 
 
