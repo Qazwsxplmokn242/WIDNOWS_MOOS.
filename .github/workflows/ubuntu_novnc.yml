@@ -16,9 +16,9 @@ jobs:
          
       - name: ngrok
         run:  |
-         snap install ngrok
-         ngrok config add-authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
-         ngrok http 80
+         sudo snap install ngrok
+         sudo ngrok config add-authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
+         sduo ngrok http 80
 
 
         
