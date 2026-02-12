@@ -17,8 +17,8 @@ jobs:
          
       - name: ngrok
         run:  |
-         sudo ngrok config add-authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
-         sudo ngrok http 80
+          ngrok config add-authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
+          ngrok http 80
 
 
         
