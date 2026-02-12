@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: install xfce4_novnc
         run:  |
+         sudo apt update 
+         sudo apt upgrade 
          sudo apt install xfce4
          sudo snap install novnc
  
