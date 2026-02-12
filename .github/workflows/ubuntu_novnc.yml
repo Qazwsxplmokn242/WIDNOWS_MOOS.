@@ -10,15 +10,15 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v5
-    #  - name: snap install xfce4_novnc
-     #   run:  |
-       #  sudo snap install novnc
-        #sudo snap install ngrok
+     # - name: snap install xfce4_novnc
+       # run:  |
+        # sudo snap install novnc
          
-      - name: install zrok
-        run: bash <(curl -fsSL https://raw.githubusercontent.com/kazekagyeee/zrok-auto-install/main/install-ubuntu.sh)
-
-
+      - name: ngrok
+        run:  |
+         snap install ngrok
+         ngrok config add-authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
+         ngrok http 80
 
 
         
