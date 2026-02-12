@@ -8,10 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: snap install xfce4_novnc
+      - name: install xfce4_novnc
         run:  |
          sudo apt install xfce4
-      - name: snap install xfce4_novnc
-        run:  |
          sudo snap install novnc
  
+      - name: Download and setup ngrok
+        run: |
+           wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+           unzip ngrok-stable-linux-amd64.zip
+           ./ngrok authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
+      - name: Expose service
+        run: ./ngrok http 8080 &
