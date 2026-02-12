@@ -1,4 +1,4 @@
-name: Build from Dockerfile
+name: ubuntu_novnc
 
 on:
   push:
