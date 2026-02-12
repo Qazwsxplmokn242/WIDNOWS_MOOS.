@@ -13,12 +13,15 @@ jobs:
       - name: snap install xfce4_novnc
         run:  |
          sudo snap install novnc
-         sudo snap install ngrok
-         
-      - name: ngrok
-        run:  |
-          ngrok config add-authtoken 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
-          ngrok http 80
+ 
+      - uses: luisboto/ngrok-tunnel-action@<VERSION>
+        with:
+          timeout: 1h
+          port: 8080
+          ngrok_authtoken: 39Z13C8a58TzaTLeBEQrqdgyQvi_5HLkdxcf1jDV7oE3KC5BX
+          tunnel_type: http
+          save_url_to_filename: tunnelURL.md
+      
 
 
         
